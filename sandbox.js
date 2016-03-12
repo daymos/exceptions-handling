@@ -8,4 +8,8 @@ function unreliableFunction(a,b){
     console.log(y)
 }
 
-unreliableFunction(2,3)
+try {
+	unreliableFunction(2,3)
+} finally {
+	console.log("the program has reached the end")
+}
