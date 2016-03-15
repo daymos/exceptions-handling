@@ -1,7 +1,7 @@
 # Working with exceptions
 
 ##Intro
-This readme will cover the usage of the following functions: throw, try, catch, finally:
+This readme will cover the usage of the following functions: throw, try, catch, finally.
 
 ## Why is exception handling useful
 Exceptions are a way to deal with errors that can occur when your code is executed.  
@@ -23,8 +23,8 @@ This function is an unrealible one. When invoked, half of the times it will retu
 
 ![img1](img/s1.png)
 
-## try{}...finally{}
-In this case, where I have a single function in my program, it doesn't create a big problem. But what would happen if this function was part of a bigger program? If the unreliableFunction fails, the code that comes after the function call would not be executed. See this example:
+## try {}... finally {}
+What would happen if this function was part of a bigger program? If the unreliableFunction fails, the code that comes after the function call would not be executed. See this example:
  
 ```javascript
 function unreliableFunction(a,b){  
@@ -40,14 +40,14 @@ unreliableFuncion(2,3)
 console.log("the program has reached the end")
 ```  
 
-Fifty percent of the times, whenthe unreliableFunction doesn't fail this will be the output:
+Fifty percent of the times, when the unreliableFunction doesn't fail this will be the output:
 ![img2](img/s2.png)
 
 When the unreliableFunction returns the product this will be the output. You can see that the code following the function call has been executed:
 ![img3](img/s3.png)
 
 
-It may be the case that the last line of code is essential to my program, so how do I make sure that it is executed even if the function fails? In javascript I can use the construct try{}...finally{}
+It may be the case that the last line of code is essential to my program, so how do I make sure that it is executed even if the function fails? In javascript I can use the construct `try {} ... finally {}`
 ```javascript
 function unreliableFunction(a,b){  
   var x = Math.random()  
@@ -64,10 +64,10 @@ try {
     console.log("the program has reached the end")
 }
 ```  
-if the unreliableFunction doesn fail the output will be as before. Instead when it fails I will see something like this:
+If the unreliableFunction doesn fail the output will be as before. Instead when it fails I will see something like this:
 ![img3](img/s4.png)
 
-As you can see the last line of the code has beed executed even if the function before failed.  There is an important observation to make at this point: **Why is the error sent to the console after the last line of the program is executed and not before?** Understanding the answer to this question is at the core of understanding how exceptions work in JS. Before answering the question I will show you a different example where the error message is displayed in the console **before** the last line of code is executed:
+You can see the last line of the code has beed executed even if the function before failed.  There is an important observation to make at this point: **Why is the error sent to the console after the last line of the program is executed and not before?** Understanding the answer to this question is at the core of understanding how exceptions work in JS. Before answering the question I will show you the same example where the error message is displayed in the console **before** the last line of code is executed:
 
 ```javascript
 function unreliableFunction(a,b){  
@@ -99,10 +99,10 @@ However, leaving an exception to the environment is not the only way possible.I 
     console.log(e.message)   
 }
 ```
-Because the exception didn't reach the environment I don't see displayed the whole execution stack, but only my message. 
+
 
 ## throw 
-In this example I use the statement `console.log(y)` to create an error, where y is not defined. However I could decide to raise an exception explicitly usinf _throw_.
+In this example I use the statement `console.log(y)` to create an error, because y is not defined. However, I could decide to raise an exception explicitly usinf _throw_.
 Here is the same example as before using throw:
 ```javascript
 function unreliableFunction(a,b){
@@ -122,6 +122,11 @@ try {
 ```
 
 This code replicate the exact output of the previous example. throw is followed by a new object, that is create via the Error() constructor and store inside it the message "y is not defined". In this case it doesn't make much sense to use this particular message since I am not invoking console.log() on an undefined variable y, but I kept it to show that I am doing the exact  same thing as before, just in an explicit way. 
+
+
+#References
+
+[Chapter 8 of Eloquent Javascript](http://eloquentjavascript.net/08_error.html)
 
 
 
